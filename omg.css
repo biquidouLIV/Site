@@ -1,0 +1,22 @@
+.Title{
+    Text-align:center;
+    color : red;
+    font-size: 100px;
+}
+
+body{
+    background-color:yellow;
+}
+
+table{
+    table-layout: fixed;
+    width: 100%;
+    border: 5px solid black;
+    background: blue;
+}
+
+tr{
+    text-align: center;
+    font-size: 30px;
+}
+
