@@ -20,7 +20,7 @@ tr{
     font-size: 30px;
 }
 
-button{
+.button1{
     flex-grow: 1;
     
     text-align:center;

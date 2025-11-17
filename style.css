@@ -1,0 +1,91 @@
+body{
+    background-color: #262626;
+    background-image: url("BonhommeMainNue.png"),url("image.png");
+    background-repeat: repeat;
+    
+}
+
+h1{
+    text-align: center;
+    font-size: 70px;
+    color:#fff;
+    text-shadow:
+            0 0 3px black,
+            0 0 7px #fff,
+            0 0 10px #fff,
+            0 0 21px #fff,
+            0 0 42px blue,
+            0 0 82px blue,
+            0 0 92px blue,
+            0 0 102px blue,
+            0 0 151px blue;
+}
+
+h2{
+    text-align: center;
+    font-size: 70px;
+    color:#fff;
+    text-shadow:
+            0 0 3px black,
+            0 0 7px #fff,
+            0 0 10px #fff,
+            0 0 21px #fff,
+            0 0 42px deeppink,
+            0 0 82px hotpink,
+            0 0 92px hotpink,
+            0 0 102px hotpink,
+            0 0 151px hotpink;
+}
+
+.test a{
+    font-size: 80px;
+    color: yellow;
+    text-shadow: 0 0 3px black;
+    text-decoration: none;
+    background-color: white;
+    padding: 20px 100px 20px 100px;
+    box-shadow:
+            0 0 7px #fff,
+            0 0 10px #fff,
+            0 0 21px #fff,
+            0 0 42px yellow,
+            0 0 82px yellow,
+            0 0 92px yellow;
+}
+
+.box{
+    display: flex;
+    align-items: center;
+    justify-content: center;    
+    flex-direction: column;
+    
+}
+
+
+button{
+    display: inline-block;
+    width: 400px;
+    height: 150px;
+    margin: 50px;
+    
+    box-shadow:
+            0 0 7px #fff,
+            0 0 10px #fff,
+            0 0 21px #fff,
+            0 0 42px yellow,
+            0 0 82px yellow,
+            0 0 92px yellow;
+    
+}
+
+header{
+    background-color: darkblue;
+    height: 200px;
+    align-content: center;
+}
+
+footer{
+    background-color:green;
+    height: 200px;
+    align-content: center;
+}
