@@ -89,3 +89,8 @@ footer{
     height: 200px;
     align-content: center;
 }
+
+.box p{
+    color: chartreuse;
+    font-size: 50px;
+}
