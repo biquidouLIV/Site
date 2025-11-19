@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="omg.css">
+        <title>kk</title>
+    </head>
+    
+    <form name="general">
+        <input type="text" name="test" value="..." id="oui">
+        <button type="button" onclick="Commentaire()">Envoyer</button>
+        <br>
+        <input type="text" name="commentaire1" id="non">
+    </form>
+    <br>
+    <br>
+    <form name="general2">
+        <input type="text" name="test" value="...">
+        <button type="button" onclick="document.general2.commentaire1.value='bonjour'">Envoyer</button>
+        <br>
+        <input type="text" name="commentaire1">
+    </form>
+    <br>
+    <br>
+    <form name="general3">
+        <input type="text" name="test" value="...">
+        <button type="button" onclick="document.general3.commentaire1.value=document.general3.test.value">Envoyer</button>
+        <br>
+        <input type="text" name="commentaire1">
+    </form>
+    <br>
+    <br>
+    <form name="general3">
+        <input type="text" name="test" value="pseudo" id="pseudo">
+        <input type="text" name="test" value="commentaire" id="com">
+        <button type="button" onclick="Commentaire2()">Envoyer</button>
+        <br>
+        <input type="text" name="commentaire1">
+    </form>
+    <table id="TableCom">
+        <tr>
+            <th>Pseudo</th>
+            <th>Commentaire</th>
+        </tr>
+    </table>
+    
+<script src="kaka.js"></script>
+</html>

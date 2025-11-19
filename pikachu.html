@@ -65,8 +65,15 @@
             <input type="radio" name="exp">>10 ans</input>
         </div>
 
-        <div><p>Commentaire :</p><textarea></textarea></div>
-        <input type="button" value="Envoyer">
+        <div>
+            <p>Commentaire :</p>
+            <form name="general">
+                <input type="text" name="test" value="...">
+                <button type="button" onclick="document.general.commentaire1.textContent='omg'">Envoyer</button>
+                <p name="commentaire1" value="prout">kk</p>
+            </form>
+        </div>
+
     
 
     
