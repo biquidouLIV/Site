@@ -107,7 +107,7 @@ footer {
 }
 
 
-.intro{
+.txt{
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
@@ -117,10 +117,15 @@ footer {
 
 h1 {
     text-align: center;
+    font-size: 100px;
+}
+
+h2 {
+    text-align: center;
     font-size: 70px;
 }
 
-.intro p {
+.txt div p {
     width:90%;
     text-align: justify;
     justify-content: center;
