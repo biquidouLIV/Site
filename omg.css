@@ -21,7 +21,6 @@ body{
     gap: 30px;
 }
 
-
 .box {
     width: 400px;
     height: 150px;
@@ -101,7 +100,6 @@ header p{
     margin-top: 0%;
     text-shadow: 0 0 20px #ffffff;
     box-shadow: 0 0 100px #000000;
-
 }
 
 
@@ -158,26 +156,56 @@ h2 {
     font-size: 40px;
 }
 
+.row2 {
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
 .commentaire{
     display: flex;
-    background-color: blue;
     flex-direction: column;
     align-items: center;
 }
 
-.ComBox{
-    display: flex;
-    flex-direction: row;
+.pseudoBox{
+    width: 100px;
+    background-color: white;
+    padding: 10px 0;
+    border-radius: 10px;
+    color: black;
+    text-align: center;
+    border: solid 5px black;
+    resize: none;
+
 }
 
-.ComBox input{
-    background-color: yellow;
-    border: 0 0 50px deeppink;
-    
+.CommentaireBox{
+    width: 500px;
+    background-color: white;
+    padding: 10px 0;
+    border-radius: 10px;
+    color: black;
+    text-align: left;
+    border: solid 5px black;
+    resize: none;
+}
+
+.BoutonEnvoyer{
+    background-color: white;
+    width: 100px;
+    border:solid 5px black;
+    border-radius: 10px;
 }
 
 .commentaire table{
-    background-color: green; 
+    text-align: center;
+    background-color: white;
     border: solid 5px black;
-    width: 50%;
+    border-radius: 10px;
+    width: 90%;
+}
+
+tr {
+    border: solid 5px black;
 }

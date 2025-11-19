@@ -16,5 +16,8 @@ function Commentaire2(){
     
     tableCommentaire.appendChild(ligne)
     
+    document.getElementById("pseudo").value = "quelqu'un"
+    document.getElementById("com").value =""
+    
     
 }
