@@ -1,9 +1,3 @@
-function Commentaire(){
-    var a = document.getElementById("oui").value
-    console.log(a)
-    document.getElementById("non").value = a
-}
-
 function Commentaire2(){
     var pseudo = document.getElementById("pseudo").value
     var commentaire = document.getElementById("com").value
