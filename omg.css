@@ -1,6 +1,9 @@
+@font-face { font-family: Lexend; src: url('Lexend-Light.ttf'); }
+
 body{
     margin: 0;
     background-image: url("fond.png");
+    font-family: Lexend;
 
 }
 
@@ -13,6 +16,37 @@ body{
     
     
     flex:1;
+}
+
+.Accueil{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    
+}
+
+.leftImage{
+    background-image: url("gauche.png");
+    width: 400px;
+    height: 600px;
+    margin-left: 3%;
+    margin-right: 3%;
+    
+    border: 10px solid black;
+    border-radius: 40px;
+    box-shadow: 0 0 20px black;
+}
+
+.rightImage{
+    background-image: url("droite.png");
+    width: 400px;
+    height: 600px;
+    margin-right: 3%;
+    margin-left: 3%;
+    
+    border: 10px solid black;
+    border-radius: 40px;
+    box-shadow: 0 0 20px black;
 }
 
 .row {
@@ -36,7 +70,7 @@ body{
     box-shadow: 0 0 20px black;
     
     color: white;
-    font-size: 50px;
+    font-size: 45px;
     text-align: center;
     align-content: center;
 }
@@ -51,7 +85,7 @@ body{
     box-shadow: 0 0 20px black;
 
     color: black;
-    font-size: 50px;
+    font-size: 45px;
     text-align: center;
     align-content: center;
 }
@@ -70,7 +104,7 @@ a{
     box-shadow: 0 0 20px black;
 
     color: white;
-    font-size: 50px;
+    font-size: 45px;
     text-align: center;
     align-content: center;
     
@@ -86,7 +120,7 @@ a{
     box-shadow: 0 0 20px black;
 
     color: black;
-    font-size: 50px;
+    font-size: 45px;
     text-align: center;
     align-content: center;
 
@@ -105,7 +139,6 @@ header p{
 }
 
 
-
 footer {
     
     background-color: black;
@@ -121,6 +154,15 @@ footer p{
     font-size: 50px;
     text-align: center;
     text-shadow: 0 0 20px white;
+}
+
+.comment{
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+}
+.comment ul{
+    font-size:40px;
 }
 
 
@@ -141,6 +183,7 @@ h1 {
 h2 {
     text-align: center;
     font-size: 70px;
+    text-shadow: 0 0 3px black;
 }
 
 .txt div p {
