@@ -13,8 +13,6 @@ body{
     align-items: center;
     gap: 30px;
     padding-top: 50px;
-    
-    
     flex:1;
 }
 
@@ -37,6 +35,7 @@ body{
     box-shadow: 0 0 20px black;
 }
 
+
 .rightImage{
     background-image: url("droite.png");
     width: 400px;
@@ -52,7 +51,7 @@ body{
 .row {
     display: flex;
     justify-content: center;
-    height: 150px;
+    align-items: center;
     gap:30px;
 }
 
@@ -73,21 +72,13 @@ body{
     font-size: 45px;
     text-align: center;
     align-content: center;
+    
+    transition: background-color 0.5s,color 1s;
 }
 
 .box:hover {
-    width: 400px;
-    height: 150px;
-
-    border: 5px solid black;
-    border-radius: 40px;
     background-color: rgba(0,0,0,0.2);
-    box-shadow: 0 0 20px black;
-
     color: black;
-    font-size: 45px;
-    text-align: center;
-    align-content: center;
 }
 
 a{
@@ -107,35 +98,37 @@ a{
     font-size: 45px;
     text-align: center;
     align-content: center;
-    
+
+    transition: background-color 0.5s,color 1s;
 }
 
 .big-box:hover {
-    width: 830px;
-    height: 150px;
-
-    border: 5px solid black;
-    border-radius: 40px;
     background-color: rgba(0,0,0,0.2);
-    box-shadow: 0 0 20px black;
-
     color: black;
-    font-size: 45px;
-    text-align: center;
-    align-content: center;
-
 }
 
 header p{
-    background-color: black;
-    padding: 40px 0;
-    text-align: center;
     color: white;
     font-size: 100px;
     font-family: Impact;
-    margin-top: 0%;
-    text-shadow: 0 0 20px #ffffff;
+    text-align: center;
+    text-shadow: 0 0 20px white;
+    transition: font-size 2s;
+}
+
+.retour p:hover{
+    font-size: 120px;
+    text-decoration: underline;
+}
+
+header{
+    display: flex;
+    background-color: black;
+    height: 200px;
     box-shadow: 0 0 100px #000000;
+    align-items: center;
+    justify-content: center;
+    margin-top: 0%;
 }
 
 
@@ -238,6 +231,21 @@ h2 {
 
 .BoutonEnvoyer{
     background-color: white;
+    width: 100px;
+    border:solid 5px black;
+    border-radius: 10px;
+    transition: background-color 1s;
+}
+
+.BoutonEnvoyer:active{
+    background-color: red;
+    width: 100px;
+    border:solid 5px black;
+    border-radius: 10px;
+}
+
+.BoutonEnvoyer:active:after{
+    background-color: blue;
     width: 100px;
     border:solid 5px black;
     border-radius: 10px;
