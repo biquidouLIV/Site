@@ -145,7 +145,7 @@ footer {
     box-shadow:0 0 100px black;
 
 
-}
+}   
 
 footer p{
     font-family: Impact;
@@ -255,12 +255,6 @@ h2 {
     transform: scale(1.1);
 }
 
-.BoutonEnvoyer:active:after{
-    background-color: blue;
-    width: 100px;
-    border:solid 5px black;
-    border-radius: 10px;
-}
 
 .commentaire table{
     text-align: center;
@@ -272,4 +266,76 @@ h2 {
 
 tr {
     border: solid 5px black;
+}
+
+.contact{
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
+    width: 50%;
+    height: auto;
+    
+    border: 5px solid black;
+    border-radius: 40px;
+
+    justify-content: center;
+    justify-self: center;
+    
+    margin-bottom: 10%;
+    font-size: 20px;
+}
+.contact p{
+    margin-left: 50px;
+    margin-top: 50px;
+    font-size: 20px;
+    
+}
+
+.contact input{
+    width: auto;
+    max-width:300px;
+    height: 30px;
+    border: 2px solid black;
+    border-radius: 10px;
+    font-family: Lexend;
+    font-size: 20px;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+.contact textarea{
+    width:auto;
+    height: 200px;
+    border: 2px solid black;
+    border-radius: 10px;
+    resize: none;
+    
+    margin-left: 50px;
+    margin-bottom: 50px;
+    margin-right: 50px;
+    font-family: Lexend;
+    font-size: 20px;
+}
+
+.contact button{
+    background-color: white;
+    height: 50px;
+    width: 200px;
+    margin-left: 50px;
+    margin-bottom: 50px;
+    align-content: center;
+    text-align: center;
+    border: 2px solid black;
+    border-radius: 10px;
+    font-size: 20px;
+    
+    transition: font-size 0.5s, transform 0.1s;
+}
+
+.contact button:hover{
+    font-size: 25px;
+}
+
+.contact button:active{
+    transform: scale(1.1);
 }
