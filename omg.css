@@ -20,10 +20,10 @@ body{
     display: flex;
     flex-direction: row;
     align-items: center;
-    
 }
 
 .leftImage{
+    
     background-image: url("gauche.png");
     width: 400px;
     height: 600px;
@@ -33,7 +33,9 @@ body{
     border: 10px solid black;
     border-radius: 40px;
     box-shadow: 0 0 20px black;
+
 }
+
 
 
 .rightImage{
@@ -46,6 +48,7 @@ body{
     border: 10px solid black;
     border-radius: 40px;
     box-shadow: 0 0 20px black;
+
 }
 
 .row {
@@ -73,12 +76,13 @@ body{
     text-align: center;
     align-content: center;
     
-    transition: background-color 0.5s,color 1s;
+    transition: background-color 0.5s,color 1s, width 0.5s;
 }
 
 .box:hover {
     background-color: rgba(0,0,0,0.2);
     color: black;
+    width: 500px;
 }
 
 a{
@@ -99,12 +103,13 @@ a{
     text-align: center;
     align-content: center;
 
-    transition: background-color 0.5s,color 1s;
+    transition: background-color 0.5s,color 1s, height 0.5s;
 }
 
 .big-box:hover {
     background-color: rgba(0,0,0,0.2);
     color: black;
+    height: 180px;
 }
 
 header p{
@@ -113,12 +118,13 @@ header p{
     font-family: Impact;
     text-align: center;
     text-shadow: 0 0 20px white;
-    transition: font-size 2s;
+    border-bottom: 10px solid transparent;
+    transition: font-size 0.3s, border-bottom-color 0.8s;
 }
 
 .retour p:hover{
-    font-size: 120px;
-    text-decoration: underline;
+    font-size: 110px;
+    border-bottom-color: white;
 }
 
 header{
@@ -215,7 +221,7 @@ h2 {
     text-align: center;
     border: solid 5px black;
     resize: none;
-
+    font-size: 15px;
 }
 
 .CommentaireBox{
@@ -227,6 +233,8 @@ h2 {
     text-align: left;
     border: solid 5px black;
     resize: none;
+    font-size: 15px;
+    
 }
 
 .BoutonEnvoyer{
@@ -235,13 +243,16 @@ h2 {
     border:solid 5px black;
     border-radius: 10px;
     transition: background-color 1s;
+    font-size: 15px;
+    transition: font-size 0.5s, transform 0.1s ;
+}
+
+.BoutonEnvoyer:hover{
+    font-size: 20px;
 }
 
 .BoutonEnvoyer:active{
-    background-color: red;
-    width: 100px;
-    border:solid 5px black;
-    border-radius: 10px;
+    transform: scale(1.1);
 }
 
 .BoutonEnvoyer:active:after{
