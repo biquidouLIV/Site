@@ -283,6 +283,7 @@ tr {
     
     margin-bottom: 10%;
     font-size: 20px;
+    box-shadow: 0 0 20px black;
 }
 .contact p{
     margin-left: 50px;
@@ -301,6 +302,7 @@ tr {
     font-size: 20px;
     margin-left: 50px;
     margin-right: 50px;
+    box-shadow: 0 0 20px black;
 }
 
 .contact textarea{
@@ -315,6 +317,7 @@ tr {
     margin-right: 50px;
     font-family: Lexend;
     font-size: 20px;
+    box-shadow: 0 0 20px black;
 }
 
 .contact button{
@@ -328,7 +331,7 @@ tr {
     border: 2px solid black;
     border-radius: 10px;
     font-size: 20px;
-    
+    box-shadow: 0 0 20px black;
     transition: font-size 0.5s, transform 0.1s;
 }
 
