@@ -2,7 +2,7 @@
 
 body{
     margin: 0;
-    background-image: url("fond.png");
+    background-image: url("images/fond.png");
     font-family: Lexend;
 
 }
@@ -24,7 +24,7 @@ body{
 
 .leftImage{
     
-    background-image: url("gauche.png");
+    background-image: url("images/gauche.png");
     width: 400px;
     height: 600px;
     margin-left: 3%;
@@ -39,7 +39,7 @@ body{
 
 
 .rightImage{
-    background-image: url("droite.png");
+    background-image: url("images/droite.png");
     width: 400px;
     height: 600px;
     margin-right: 3%;
