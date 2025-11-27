@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <link rel="stylesheet" href="omg.css">
         <title>Contacter</title>
-        <link rel="icon" type="image/png" href="Icon.png">
+        <link rel="icon" type="image/png" href="images/Icon.png">
     </head>
     
     
@@ -14,28 +14,38 @@
         </header>
             
         <main>
-            <h1>Allo Tiralark</h1>
+            <h1>Allo Tiralark ?</h1>
             
-            <div class="contact">
-                    <p>Tapèl koman : </p>
-                    <input type="text">
+            <div class="contact"  style="animation: apparition 1s ease-out">
+                    <p style="animation: apparition 1.3s ease-out">Tapèl koman : </p>
+                    <input type="text" id="ContactBox1" style="animation: apparition 1.3s ease-out">
                 
-                    <p>Ton nadresse : </p>
-                    <input type="email">
+                    <p style="animation: apparition 1.4s ease-out">Ton nadresse : </p>
+                    <input type="email" id="ContactBox2" style="animation: apparition 1.4s ease-out">
                 
-                    <p>Kesta : </p>
-                    <input type="text">
+                    <p style="animation: apparition 1.5s ease-out">Kesta : </p>
+                    <input type="text" id="ContactBox3" style="animation: apparition 1.5s ease-out">
                 
-                    <p>Kestuveu : </p>
-                    <textarea></textarea>
+                    <p style="animation: apparition 1.6s ease-out">Kestuveu : </p>
+                    <textarea  id="ContactBox4" style="animation: apparition 1.6s ease-out"></textarea>
                 
-                    <button>Envoyer</button>
-                </div>
+                    <button onclick="ouvrirPopUp()" style="animation: apparition 1.8s ease-out">Envoyer</button>
             </div>
         </main>
+
+        <div id="Overlay" class="overlay">
+            <div class="popup">
+                <h2>Merssy !</h2>
+                <p>(T'auras jamais de réponse)</p>
+                <button onclick="fermerPopUp()">Compris</button>
+            </div>
+        </div>
+        
+        <footer>
+            <p>Le Tiralark Enkor</p>
+        </footer>
+    
     </body>
 
-    <footer>
-        <p>Le Tiralark Enkor</p>
-    </footer>
+<script src="kaka.js"></script>
 </html>

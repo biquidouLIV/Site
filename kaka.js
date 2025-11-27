@@ -1,7 +1,11 @@
-function Commentaire2(){
+function Commentaire(){
     var pseudo = document.getElementById("pseudo").value
     var commentaire = document.getElementById("com").value
         
+    if(commentaire == ""){
+        return
+    }
+    
     var date = new Date()
 
     j = date.getDate().toString()
@@ -28,6 +32,19 @@ function Commentaire2(){
     
     document.getElementById("pseudo").value = "quelqu'un"
     document.getElementById("com").value =""
-    
-    
+}
+
+function Contacter(){
+    document.getElementById("ContactBox1").value = ""
+    document.getElementById("ContactBox2").value = ""
+    document.getElementById("ContactBox3").value = ""
+    document.getElementById("ContactBox4").value = ""
+}
+
+function ouvrirPopUp() {
+    document.getElementById("Overlay").style.display = "flex";
+}
+
+function fermerPopUp() {
+    document.getElementById("Overlay").style.display = "none";
 }
