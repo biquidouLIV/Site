@@ -41,6 +41,22 @@ function Contacter(){
     document.getElementById("ContactBox4").value = ""
 }
 
+function envoyerMail() {
+    var nom = document.getElementById("ContactBox1").value;
+    var objet = document.getElementById("ContactBox3").value;
+    var message = document.getElementById("ContactBox4").value;
+
+    var contenu = "Bonjour je sapel " + nom + " koman keske tu vas ?\n\n" + message;
+
+    var destinataire = "wengshinliam@gmail.com";
+
+    var lien = "mailto:" + destinataire
+        + "?subject=" + encodeURIComponent(objet)
+        + "&body=" + encodeURIComponent(contenu);
+
+    window.location.href = lien;
+    ouvrirPopUp();
+}
 function ouvrirPopUp() {
     document.getElementById("Overlay").style.display = "flex";
 }
@@ -48,3 +64,4 @@ function ouvrirPopUp() {
 function fermerPopUp() {
     document.getElementById("Overlay").style.display = "none";
 }
+
