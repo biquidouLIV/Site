@@ -7,49 +7,61 @@ body{
 
 }
 
-.container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 30px;
-    padding-top: 50px;
-    flex:1;
-}
 
 .Accueil{
     display: flex;
     flex-direction: row;
     align-items: center;
+    height: 600px;
+    justify-items: center;
 }
+
+
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    gap: 30px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    flex:1;
+    width: 100%;
+    height: 100%;
+}
+
+
 
 .leftImage{
     
     background-image: url("images/gauche.png");
     width: 400px;
     height: 600px;
-    margin-left: 3%;
-    margin-right: 3%;
+
     
     border: 10px solid black;
     border-radius: 40px;
     box-shadow: 0 0 20px black;
-
+    
+    position: absolute;
+    left: 1%;
 }
 
 
 
 .rightImage{
     background-image: url("images/droite.png");
+    
     width: 400px;
     height: 600px;
-    margin-right: 3%;
-    margin-left: 3%;
     
     border: 10px solid black;
     border-radius: 40px;
     box-shadow: 0 0 20px black;
     
-
+    position: absolute;
+    right: 1%;
 }
 
 .row {
@@ -103,6 +115,7 @@ a{
     font-size: 45px;
     text-align: center;
     align-content: center;
+    
 
     transition: background-color 0.5s,color 1s, height 0.5s;
 }
@@ -111,6 +124,7 @@ a{
     background-color: rgba(0,0,0,0.2);
     color: black;
     height: 180px;
+    
 }
 
 header p{
