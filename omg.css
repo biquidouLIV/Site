@@ -239,6 +239,7 @@ h2 {
     border: solid 5px black;
     resize: none;
     font-size: 15px;
+    box-shadow: 0 0 20px black;
 }
 
 .CommentaireBox{
@@ -251,7 +252,7 @@ h2 {
     border: solid 5px black;
     resize: none;
     font-size: 15px;
-    
+    box-shadow: 0 0 20px black;
 }
 
 .BoutonEnvoyer{
@@ -261,6 +262,7 @@ h2 {
     border-radius: 10px;
     font-size: 15px;
     transition: font-size 0.5s, transform 0.1s, background-color 1s;
+    box-shadow: 0 0 20px black;
 }
 
 .BoutonEnvoyer:hover{
@@ -278,6 +280,7 @@ h2 {
     border: solid 5px black;
     border-radius: 10px;
     width: 90%;
+    box-shadow: 0 0 20px black;
 }
 
 tr {
