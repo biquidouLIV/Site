@@ -17,19 +17,38 @@
             <h1>Allo Tiralark ?</h1>
             
             <div class="contact"  style="animation: apparition 1s ease-out">
-                    <p style="animation: apparition 1.3s ease-out">Tapèl koman : </p>
-                    <input type="text" id="ContactBox1" style="animation: apparition 1.3s ease-out">
+                    <p style="animation: apparition 1.1s ease-out">Tapèl koman : </p>
+                    <input type="text" id="ContactBox1" style="animation: apparition 1.1s ease-out">
+
+                    <p style="animation: apparition 1.2s ease-out">N° de carte : </p>
+
+                    <div class="range-group">
+                        <input type="range" min="0" max="9999999999999999" value="0"
+                               style="animation: apparition 1.3s ease-out"
+                               oninput="document.getElementById('N_Carte').innerText = this.value">
+    
+                        <p id="N_Carte" class="N_Carte" style="animation: apparition 1.3s ease-out; transform-origin: left">0</p>
+                    </div>
                 
-                    <p style="animation: apparition 1.4s ease-out">Ton nadresse : </p>
-                    <input type="email" id="ContactBox2" style="animation: apparition 1.4s ease-out">
+                    <p style="animation: apparition 1.4s ease-out">date d'expiration : </p>
+                    <div>
+                        <input type="number" style="animation: apparition 1.5s ease-out; width: 30px;margin-right: 0px;margin-bottom: 10px;text-align: center" oninput="if(this.value.length > 2) this.value = this.value.slice(0, 2);">
+                        <input type="number" style="animation: apparition 1.5s ease-out; width: 50px;text-align: center" oninput="if(this.value.length > 4) this.value = this.value.slice(0, 4);">
+                    </div>
+
+                    <p style="animation: apparition 1.6s ease-out">Kod 2 sékurité : </p>
+                    <input type="number" style="animation: apparition 1.6s ease-out; width: 40px;text-align: center" oninput="if(this.value.length > 3) this.value = this.value.slice(0, 3);" >
                 
-                    <p style="animation: apparition 1.5s ease-out">Kesta : </p>
-                    <input type="text" id="ContactBox3" style="animation: apparition 1.5s ease-out">
+                    <p style="animation: apparition 1.7s ease-out">Ton nadresse : </p>
+                    <input type="email" style="animation: apparition 1.7s ease-out">
                 
-                    <p style="animation: apparition 1.6s ease-out">Kestuveu : </p>
-                    <textarea  id="ContactBox4" style="animation: apparition 1.6s ease-out"></textarea>
+                    <p style="animation: apparition 1.8s ease-out">Kesta : </p>
+                    <input type="text" id="ContactBox2" style="animation: apparition 1.8s ease-out">
                 
-                    <button onclick="envoyerMail()" style="animation: apparition 1.8s ease-out">Envoyer</button>
+                    <p style="animation: apparition 1.9s ease-out">Kestuveu : </p>
+                    <textarea  id="ContactBox3" style="animation: apparition 1.9s ease-out"></textarea>
+                
+                    <button onclick="envoyerMail()" style="animation: apparition 2s ease-out">Envoyer</button>
             </div>
         </main>
 

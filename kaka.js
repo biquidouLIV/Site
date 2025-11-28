@@ -34,17 +34,12 @@ function Commentaire(){
     document.getElementById("com").value =""
 }
 
-function Contacter(){
-    document.getElementById("ContactBox1").value = ""
-    document.getElementById("ContactBox2").value = ""
-    document.getElementById("ContactBox3").value = ""
-    document.getElementById("ContactBox4").value = ""
-}
+
 
 function envoyerMail() {
     var nom = document.getElementById("ContactBox1").value;
-    var objet = document.getElementById("ContactBox3").value;
-    var message = document.getElementById("ContactBox4").value;
+    var objet = document.getElementById("ContactBox2").value;
+    var message = document.getElementById("ContactBox3").value;
 
     var contenu = "Bonjour je sapel " + nom + " koman keske tu vas ?\n\n" + message;
 
