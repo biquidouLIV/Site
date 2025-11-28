@@ -5,6 +5,9 @@ function Commentaire(){
     if(commentaire == ""){
         return
     }
+    if(pseudo == ""){
+        pseudo = "un gens"
+    }
     
     var date = new Date()
 
