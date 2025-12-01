@@ -33,9 +33,12 @@ function Commentaire(){
     ligne.appendChild(newDate)
     tableCommentaire.appendChild(ligne)
     
-    document.getElementById("pseudo").value = "quelqu'un"
+    document.getElementById("pseudo").value = ""
     document.getElementById("com").value =""
 }
+
+
+
 
 
 
@@ -44,7 +47,7 @@ function envoyerMail() {
     var objet = document.getElementById("ContactBox2").value;
     var message = document.getElementById("ContactBox3").value;
 
-    var contenu = "Bonjour je sapel " + nom + " koman keske tu vas ?\n\n" + message;
+    var contenu = "Bonjour je sapel " + nom + " koman keske tu vas ?\n" + message;
 
     var destinataire = "wengshinliam@gmail.com";
 
