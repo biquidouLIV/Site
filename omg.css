@@ -550,7 +550,7 @@ input[type=number]::-webkit-inner-spin-button {
     border-radius: 20px;
     background-color: black;
     box-shadow: 0 0 20px black;
-
+    
     
     color: white;
     font-size: 25px;
@@ -568,7 +568,7 @@ input[type=number]::-webkit-inner-spin-button {
 
 
 .shop-info{
-    display: flex;
+    display: none;
     position: fixed;
     top: 0;
     left: 0;
@@ -597,27 +597,43 @@ input[type=number]::-webkit-inner-spin-button {
     animation: apparition 0.3s ease-out;
 }
 
-.description{
+.info-produit{
     display: flex;
     flex-direction: row;
-    height: 100%;
-    background-color: red;
+}
+
+.desciption{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-left:80px;
+    margin-right: 60px;
+    font-size: 25px;
+
+    width:90%;
+    text-align: justify;
+}
+
+.prix{
+    text-align: center;
+    font-size: 50px;
 }
 
 .shop-info-PopUp button {
     background-color: black;
     color: white;
     border: none;
-    padding: 15px 30px;
+    padding:30px;
     font-size: 20px;
     border-radius: 10px;
     cursor: pointer;
-    margin-top: 20px;
+    margin-top: 30px;
     font-family: Lexend;
+    
     transition: transform 0.1s;
 }
 
 .shop-info-PopUp button:hover {
-    transform: scale(1.1);
+    background-color: rgba(0,0,0,0.2);
     background-color: #333;
 }
