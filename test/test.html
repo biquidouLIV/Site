@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        
+    </head>
+    <body>
+        <button onclick="Get()">Get</button>
+        <button onclick="Post()">Post</button>
+    </body>
+    <script>
+        function Get(){
+            fetch("https://93kz6.wiremockapi.cloud/ecoles/rubika/eleves?nom=David")
+                .then(response =>{
+                    return response.json()
+                })
+                .then(data => {
+                    fetch("https://93kz6.wiremockapi.cloud/ecoles/rubika/eleve", {
+                        method: "POST",
+                        body: data
+                    })
+                })
+        }
+
+    </script>
+</html>

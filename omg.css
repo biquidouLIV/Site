@@ -37,7 +37,7 @@ body{
     
     background-image: url("images/gauche.png");
     width: 400px;
-    height: 600px;
+    height: 800px;
 
     
     border: 10px solid black;
@@ -53,7 +53,7 @@ body{
     background-image: url("images/droite.png");
 
     width: 400px;
-    height: 600px;
+    height: 800px;
 
     border: 10px solid black;
     border-radius: 40px;
@@ -496,4 +496,128 @@ input[type=number]::-webkit-inner-spin-button {
 
 .range-group input[type=range]:active::-webkit-slider-thumb {
     transform: scale(1.2);
+}
+
+.shop{
+    display: flex;
+    
+    max-width: 100%;
+    gap: 50px;
+    margin:50px;
+    
+    align-content: center;
+    justify-content: center;
+    text-align: center;
+    
+    background-color: transparent;
+}
+
+.shop-item{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    background-color: white;
+    height: 400px;
+    width: 400px;
+    border: 5px solid black;
+    border-radius:40px;
+
+    animation: apparition 1s ease-out
+}
+
+.shop-image{
+    background-color: white;
+    width: 350px;
+    height: 150px;
+    justify-self: center;
+    margin: 15px 15px 0px 15px;
+
+}
+
+.shop-item p{
+    color:black;
+    font-size: 40px;
+    margin: 32px;
+    max-width: 350px;
+}
+
+.shop-item button{
+    width: 350px;
+    height: 100px;
+
+    border: 5px solid black;
+    border-radius: 20px;
+    background-color: black;
+    box-shadow: 0 0 20px black;
+
+    
+    color: white;
+    font-size: 25px;
+    text-align: center;
+    align-content: center;
+    
+    transition: background-color 0.5s;
+}
+
+.shop-item button:hover{
+    color:black;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+
+
+.shop-info{
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+}
+
+.shop-info-PopUp{
+    display: flex;
+    flex-direction: column;
+    
+    background-color: white;
+    width: 80%;
+    height: 80%;
+    padding: 20px;
+
+    border: 5px solid black;
+    border-radius: 40px;
+    box-shadow: 0 0 50px white;
+
+    text-align: center;
+    font-family: Lexend;
+    animation: apparition 0.3s ease-out;
+}
+
+.description{
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    background-color: red;
+}
+
+.shop-info-PopUp button {
+    background-color: black;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-top: 20px;
+    font-family: Lexend;
+    transition: transform 0.1s;
+}
+
+.shop-info-PopUp button:hover {
+    transform: scale(1.1);
+    background-color: #333;
 }

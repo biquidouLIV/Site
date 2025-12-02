@@ -66,3 +66,10 @@ function fermerPopUp() {
     document.getElementById("Overlay").style.display = "none";
 }
 
+function ouvrirShopInfo(){
+    document.getElementById("ShopInfo").style.display = "flex";
+}
+
+function fermerShopInfo(){
+    document.getElementById("ShopInfo").style.display = "none";
+}
