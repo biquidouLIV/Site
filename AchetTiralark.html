@@ -20,27 +20,22 @@
         <div class="shop-item">
             <img src="images/produit1.png" class="shop-image"></img>
             <p>Tiralark en pot</p>
-            <button onclick="ouvrirShopInfo()">Acheter</button>
+            <button onclick="TiralarkEnPot()">Acheter</button>
         </div>
-        
-        
-        
-        
-        
         <div class="shop-item">
             <img src="images/produit1.png" class="shop-image"></img>
             <p>Lot de Tiralark en Pot</p>
-            <button>Acheter</button>
+            <button onclick="LotDeTiralarkEnPot()">Acheter</button>
         </div>
         <div class="shop-item">
             <img src="images/produit1.png" class="shop-image"></img>
             <p>Tiralark En Tube</p>
-            <button>Acheter</button>
+            <button onclick="TiralarkEnTube()">Acheter</button>
         </div>
         <div class="shop-item">
             <img src="images/produit1.png" class="shop-image"></img>
             <p>Zarkuzés</p>
-            <button>Acheter</button>
+            <button onclick="Zarkuzes()">Acheter</button>
         </div>
     </div>
 
@@ -48,22 +43,22 @@
         <div class="shop-item">
             <img src="images/produit1.png" class="shop-image"></img>
             <p>Blazonhuzé</p>
-            <button>Acheter</button>
+            <button onclick="Blazonhuzé()">Acheter</button>
         </div>
         <div class="shop-item">
             <img src="images/produit1.png" class="shop-image"></img>
             <p>Barre d'Uranium 235</p>
-            <button>Acheter</button>
+            <button onclick="Uranium()">Acheter</button>
         </div>
         <div class="shop-item">
             <img src="images/produit1.png" class="shop-image"></img>
             <p>truc random tres tres précis</p>
-            <button>Acheter</button>
+            <button onclick="Random()">Acheter</button>
         </div>
         <div class="shop-item">
             <img src="images/produit1.png" class="shop-image"></img>
             <p>Formation Tiralark</p>
-            <button>Acheter</button>
+            <button onclick="Formation1()">Acheter</button>
         </div>
     </div>
 
@@ -71,22 +66,22 @@
         <div class="shop-item">
             <img src="images/produit1.png" class="shop-image"></img>
             <p>Formation QI++</p>
-            <button>Acheter</button>
+            <button onclick="Formation2()">Acheter</button>
         </div>
         <div class="shop-item">
             <img src="images/produit1.png" class="shop-image"></img>
             <p>Formation Tiralark Pro Max</p>
-            <button>Acheter</button>
+            <button onclick="Formation3()">Acheter</button>
         </div>
         <div class="shop-item">
             <img src="images/produit1.png" class="shop-image"></img>
             <p>Eau Iyophilisé pour Tiralarkeur</p>
-            <button>Acheter</button>
+            <button onclick="Eau()">Acheter</button>
         </div>
         <div class="shop-item">
             <img src="images/produit1.png" class="shop-image"></img>
             <p>Car Quoi ?</p>
-            <button>Acheter</button>
+            <button onclick="Carquoi()">Acheter</button>
         </div>
     </div>
 
@@ -94,22 +89,22 @@
         <div class="shop-item">
             <img src="images/produit1.png" class="shop-image"></img>
             <p>10+</p>
-            <button>Acheter</button>
+            <button onclick="DixPlus()">Acheter</button>
         </div>
         <div class="shop-item">
             <img src="images/produit1.png" class="shop-image"></img>
             <p>pailluzé</p>
-            <button>Acheter</button>
+            <button onclick="Pailluze()">Acheter</button>
         </div>
         <div class="shop-item">
             <img src="images/produit1.png" class="shop-image"></img>
             <p>Offre d'emploi</p>
-            <button>Acheter</button>
+            <button onclick="OffreEmploi()">Acheter</button>
         </div>
         <div class="shop-item">
             <img src="images/produit1.png" class="shop-image"></img>
             <p>Rien</p>
-            <button>Acheter</button>
+            <button onclick="Rien()">Acheter</button>
         </div>
         
 
@@ -118,21 +113,24 @@
     <div id="ShopInfo" class="shop-info">
         <div class="shop-info-PopUp" id="shopPopUp">
             
-            <h2>Tiralark En Pot!</h2>
+            <h2 id="productName"></h2>
             
             <div class="info-produit">  
                 
                 <img src="images/produit1grand.png" style="max-height: 500px;max-width: 500px; width: 100%;background-color: blue; margin-left: 50px">
                 
                 <div class="desciption">
-                    <p class="prix">56,00€</p>
-                    <p>baaaaaaaaaaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaa aaaaaaaa aaaaaaaaaaaaa aaaaaaaaaz zzzzaaa aaaaaa aaa aaaaaaaaaa aaaaaaaaa aaaa aaaaaccccc cccccc ccccc cc cccaaaaaaa aaaaaaaaaaaaa aaaaaaaaa aaaaaa aaaaaaa aaaaaaaa aaaaaaa aa aaaaaaa aaaaaaaaaaa aaaa aaaaa aaaaaaa aaaaaa aaaaaaaaaaa aaaaaaaaaa aaaaaaaaaaa aaaaaa aaaaaaaa aaaaaaaaaa aaaaaaa aaaaaaaaaaaaaaa aaaaaaaaaaaa aaaaaaaaaaaaa</p>
+                    <p class="prix" id="prix"></p>
+                    <p id="description"></p>
                 </div>
                 
             </div>    
             
-            
-            <button onclick="fermerShopInfo()">Compris</button>
+            <div class="shop-info-button">
+                <button onclick="fermerShopInfo()">Parti</button>
+                <button onclick="fermerShopInfo()">Acheter</button>
+            </div>
+
                 
             </div>
         </div>

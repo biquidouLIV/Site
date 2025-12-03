@@ -66,10 +66,127 @@ function fermerPopUp() {
     document.getElementById("Overlay").style.display = "none";
 }
 
+
+
+
+
 function ouvrirShopInfo(){
     document.getElementById("ShopInfo").style.display = "flex";
 }
 
 function fermerShopInfo(){
     document.getElementById("ShopInfo").style.display = "none";
+}
+
+
+function TiralarkEnPot(){
+    document.getElementById("productName").innerText = "Tiralark en Pot"
+    document.getElementById("prix").innerText = "100,00€"
+    document.getElementById("description").innerText = "kaka kaka kaka"
+    ouvrirShopInfo()
+}
+
+function LotDeTiralarkEnPot(){
+    document.getElementById("productName").innerText = "Lot De Tiralark en Pot"
+    document.getElementById("prix").innerText = "500,00€"
+    document.getElementById("description").innerText = "kaka kaka kaka *5"
+    ouvrirShopInfo()
+}
+
+function TiralarkEnTube(){
+    document.getElementById("productName").innerText = "Tiralark en Tube"
+    document.getElementById("prix").innerText = "100,00€"
+    document.getElementById("description").innerText = "kaka kaka kaka"
+    ouvrirShopInfo()
+}
+
+function Zarkuzes(){
+    document.getElementById("productName").innerText = "Zarkuzés"
+    document.getElementById("prix").innerText = "950,00€"
+    document.getElementById("description").innerText = "kaka kaka kaka"
+    ouvrirShopInfo()
+}
+
+function Blazonhuzé(){
+    document.getElementById("productName").innerText = "Blazonhuzé"
+    document.getElementById("prix").innerText = "30,00€"
+    document.getElementById("description").innerText = "kaka kaka kaka"
+    ouvrirShopInfo()
+}
+
+function Uranium(){
+    document.getElementById("productName").innerText = "Uranium"
+    document.getElementById("prix").innerText = "6000,00€"
+    document.getElementById("description").innerText = "kaka kaka kaka"
+    ouvrirShopInfo()
+}
+
+function Random(){
+    document.getElementById("productName").innerText = "Truc tres tres précis"
+    document.getElementById("prix").innerText = "10,00€"
+    document.getElementById("description").innerText = "kaka kaka kaka"
+    ouvrirShopInfo()
+}
+
+function Formation1(){
+    document.getElementById("productName").innerText = "Formation Tiralark"
+    document.getElementById("prix").innerText = "2500,00€"
+    document.getElementById("description").innerText = "kaka kaka kaka"
+    ouvrirShopInfo()
+}
+
+function Formation2(){
+    document.getElementById("productName").innerText = "Formation QI++"
+    document.getElementById("prix").innerText = "950,00€"
+    document.getElementById("description").innerText = "kaka kaka kaka"
+    ouvrirShopInfo()
+}
+
+function Formation3(){
+    document.getElementById("productName").innerText = "Formation Tiralark Pro Max"
+    document.getElementById("prix").innerText = "9999,99€"
+    document.getElementById("description").innerText = "kaka kaka kaka"
+    ouvrirShopInfo()
+}
+
+function Eau(){
+    document.getElementById("productName").innerText = "Eau Iyophilisé"
+    document.getElementById("prix").innerText = "25,00€"
+    document.getElementById("description").innerText = "kaka kaka kaka"
+    ouvrirShopInfo()
+}
+
+function Carquoi(){
+    document.getElementById("productName").innerText = "Car Quoi ?"
+    document.getElementById("prix").innerText = "44,00€"
+    document.getElementById("description").innerText = "kaka kaka kaka"
+    ouvrirShopInfo()
+}
+
+function DixPlus(){
+    document.getElementById("productName").innerText = "10+"
+    document.getElementById("prix").innerText = "10,00€"
+    document.getElementById("description").innerText = "kaka kaka kaka"
+    ouvrirShopInfo()
+}
+
+function Pailluze(){
+    document.getElementById("productName").innerText = "Pailluzé"
+    document.getElementById("prix").innerText = "20,00€"
+    document.getElementById("description").innerText = "kaka kaka kaka"
+    ouvrirShopInfo()
+}
+
+function OffreEmploi(){
+    document.getElementById("productName").innerText = "Offre d'emploi"
+    document.getElementById("prix").innerText = "950,00€"
+    document.getElementById("description").innerText = "kaka kaka kaka"
+    ouvrirShopInfo()
+}
+
+function Rien(){
+    document.getElementById("productName").innerText = "Rien"
+    document.getElementById("prix").innerText = "999,99€"
+    document.getElementById("description").innerText = "rien"
+    ouvrirShopInfo()
 }
