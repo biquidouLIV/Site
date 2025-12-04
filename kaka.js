@@ -177,16 +177,18 @@ function Pailluze(){
     ouvrirShopInfo()
 }
 
-function OffreEmploi(){
-    document.getElementById("productName").innerText = "Offre d'emploi"
+function PayantEmploi(){
+    document.getElementById("productName").innerText = "Payant d'emploi"
     document.getElementById("prix").innerText = "950,00€"
     document.getElementById("description").innerText = "kaka kaka kaka"
+    document.getElementById("Img").src = "images/produit1grand.png"
     ouvrirShopInfo()
 }
 
-function Rien(){
-    document.getElementById("productName").innerText = "Rien"
+function Kanard(){
+    document.getElementById("productName").innerText = "Kanard"
     document.getElementById("prix").innerText = "999,99€"
-    document.getElementById("description").innerText = "rien"
+    document.getElementById("description").innerText = "coin coin"
+    document.getElementById("Img").src = "images/kanard.png"
     ouvrirShopInfo()
 }
