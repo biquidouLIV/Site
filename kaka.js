@@ -66,10 +66,6 @@ function fermerPopUp() {
     document.getElementById("Overlay").style.display = "none";
 }
 
-
-
-
-
 function ouvrirShopInfo(){
     document.getElementById("ShopInfo").style.display = "flex";
 }
@@ -78,11 +74,48 @@ function fermerShopInfo(){
     document.getElementById("ShopInfo").style.display = "none";
 }
 
+function ouvrirPopupConnexion(){
+ document.getElementById("PopupConnexion").style.display ="flex"
+}
+
+function fermerPopupConnexion(){
+    document.getElementById("PopupConnexion").style.display = "none"
+}
+
+
+function test(){
+    var div = document.createElement("div")
+    var image = document.createElement("img")
+    var nom = document.createElement("p")
+    var bouton = document.createElement("button")
+    
+    fetch('https://ffw95cfxfg.execute-api.eu-north-1.amazonaws.com/produits?gp1=Liam')
+        .then(data => {
+            return data.json();
+
+        })
+        .then(data =>{
+            console.log(data)
+
+        })
+        .then(produit =>{
+            produit.forEach(CreerProduit())
+        })
+}
+
+function CreerProduit(){
+    var div = document.createElement("div")
+    var image = document.createElement("img")
+    var nom = document.createElement("p")
+    var bouton = document.createElement("button")
+}
+
 
 function TiralarkEnPot(){
+
     document.getElementById("productName").innerText = "Tiralark en Pot"
-    document.getElementById("prix").innerText = "100,00€"
-    document.getElementById("description").innerText = "kaka kaka kaka"
+    document.getElementById("prix").innerText = "150,00€"
+    document.getElementById("description").innerText = "kaka"
     ouvrirShopInfo()
 }
 
