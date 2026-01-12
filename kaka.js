@@ -83,145 +83,174 @@ function fermerPopupConnexion(){
 }
 
 
-function test(){
-    var div = document.createElement("div")
-    var image = document.createElement("img")
-    var nom = document.createElement("p")
-    var bouton = document.createElement("button")
-    
+function chargerProduits() {
     fetch('https://ffw95cfxfg.execute-api.eu-north-1.amazonaws.com/produits?gp1=Liam')
-        .then(data => {
-            return data.json();
+        .then(response => response.json())
+        .then(produits => {
+            var container = document.getElementById("liste-produits");
 
-        })
-        .then(data =>{
-            console.log(data)
-
-        })
-        .then(produit =>{
-            produit.forEach(CreerProduit())
+            produits.forEach(produit => {
+                CreerProduit(produit, container);
+            });
         })
 }
 
-function CreerProduit(){
-    var div = document.createElement("div")
-    var image = document.createElement("img")
-    var nom = document.createElement("p")
-    var bouton = document.createElement("button")
+function CreerProduit(produit, container){
+    // 1. Création de la div .shop-item
+    var divItem = document.createElement("div");
+    divItem.className = "shop-item";
+
+    // 2. Création de l'image
+    var img = document.createElement("img");
+    img.className = "shop-image";
+
+    // --- C'EST ICI QUE CA SE JOUE ---
+
+    // Pour t'aider : regarde dans la Console (F12) de ton navigateur.
+    // Ça va t'afficher les infos du produit. Cherche s'il y a "image", "url", "src" ou "photo".
+    console.log("Infos du produit :", produit);
+
+    // Si dans ta base de données, la colonne s'appelle "image", laisse ça :
+    if (produit.image) {
+        img.src = produit.image;
+    }
+        // Si elle s'appelle "url", remplace par : img.src = produit.url;
+    // Si elle s'appelle "photo", remplace par : img.src = produit.photo;
+    else {
+        // Image de secours si aucune image n'est trouvée
+        img.src = "images/produit1.png";
+    }
+
+    // 3. Création du nom
+    var pName = document.createElement("p");
+    pName.innerText = produit.nom || "Produit sans nom";
+
+    // 4. Création du bouton
+    var btn = document.createElement("button");
+    btn.innerText = "Acheter";
+
+    // On garde en mémoire les infos de CE produit pour la popup
+    btn.onclick = function() {
+        AfficherDetailsProduit(produit);
+    };
+
+    // 5. Assemblage
+    divItem.appendChild(img);
+    divItem.appendChild(pName);
+    divItem.appendChild(btn);
+
+    // 6. Ajout à la page
+    container.appendChild(divItem);
+}
+
+function AfficherDetailsProduit(produit) {
+    document.getElementById("productName").innerText = produit.nom;
+    document.getElementById("prix").innerText =produit.prix + " €";
+    document.getElementById("description").innerText = produit.description;
+    document.getElementById("Img").src = produit.image
+    
+    
+    ouvrirShopInfo();
 }
 
 
-function TiralarkEnPot(){
 
-    document.getElementById("productName").innerText = "Tiralark en Pot"
-    document.getElementById("prix").innerText = "150,00€"
-    document.getElementById("description").innerText = "kaka"
-    ouvrirShopInfo()
+
+
+
+var modeInscription = false; // Par défaut, on est en mode "Connexion"
+
+function basculerMode() {
+    modeInscription = !modeInscription; // On inverse le mode
+
+    document.getElementById("ErrorMessage").innerText = "";
+
+    var divInscrip = document.getElementById("champsInscription");
+    var titre = document.getElementById("titreConnexion");
+    var btn = document.getElementById("btnAction");
+    var lien = document.getElementById("lienMode");
+
+    if (modeInscription) {
+        // On affiche le mode Inscription
+        divInscrip.style.display = "block";
+        titre.innerText = "Créer un compte";
+        btn.innerText = "S'inscrire";
+        lien.innerText = "Toi déjà compte";
+    } else {
+        // On revient au mode Connexion
+        divInscrip.style.display = "none";
+        titre.innerText = "Connexion";
+        btn.innerText = "Se connecter";
+        lien.innerText = "Toi pas compte ? Toi faire compte";
+    }
 }
 
-function LotDeTiralarkEnPot(){
-    document.getElementById("productName").innerText = "Lot De Tiralark en Pot"
-    document.getElementById("prix").innerText = "500,00€"
-    document.getElementById("description").innerText = "kaka kaka kaka *5"
-    ouvrirShopInfo()
+function actionConnexion() {
+    if (modeInscription) {
+        Inscription();
+    } else {
+        Connexion();
+    }
 }
 
-function TiralarkEnTube(){
-    document.getElementById("productName").innerText = "Tiralark en Tube"
-    document.getElementById("prix").innerText = "100,00€"
-    document.getElementById("description").innerText = "kaka kaka kaka"
-    ouvrirShopInfo()
+
+function Connexion() {
+    var mail = document.getElementById("emailClient").value;
+    var mdp = document.getElementById("mdpClient").value;
+    
+    
+    fetch('https://ffw95cfxfg.execute-api.eu-north-1.amazonaws.com/clients?gp1=Liam')
+        .then(response => response.json())
+        
+        .then(clients => {
+            // 2. On cherche si un client a ce mail et ce mot de passe
+            var clientTrouve = clients.find(c => c.mail === mail && c.mdp === mdp);
+
+            if (clientTrouve) {
+                document.getElementById("ErrorMessage").innerText = "C'est bon t'es co "+clientTrouve.prenom + " "+clientTrouve.nom;
+                localStorage.setItem("clientConnecte", JSON.stringify(clientTrouve));
+            } else {
+                document.getElementById("ErrorMessage").innerText = "Email ou mot de passe incorrect";
+            }
+        })
+        .catch(error => console.error("Erreur:", error));
 }
 
-function Zarkuzes(){
-    document.getElementById("productName").innerText = "Zarkuzés"
-    document.getElementById("prix").innerText = "950,00€"
-    document.getElementById("description").innerText = "kaka kaka kaka"
-    ouvrirShopInfo()
-}
+function Inscription() {
+    var nom = document.getElementById("nomClient").value;
+    var prenom = document.getElementById("prenomClient").value;
+    var mail = document.getElementById("emailClient").value;
+    var mdp = document.getElementById("mdpClient").value;
+    var adresse = document.getElementById("adresseClient").value;
+    var tel = document.getElementById("telClient").value;
 
-function Blazonhuzé(){
-    document.getElementById("productName").innerText = "Blazonhuzé"
-    document.getElementById("prix").innerText = "30,00€"
-    document.getElementById("description").innerText = "kaka kaka kaka"
-    ouvrirShopInfo()
-}
+    if (!nom || !prenom || !mail || !mdp || !adresse || !tel) {
+        document.getElementById("ErrorMessage").innerText = "Toi tout remplir sinon toi pas bien";
+        return;
+    }
+    
+    var nouveauClient = {
+        prenom: prenom,
+        gp1: "Liam",
+        adresse:adresse,
+        tel:tel,
+        mail: mail,    
+        nom: nom,
+        mdp: mdp,
+    };
 
-function Uranium(){
-    document.getElementById("productName").innerText = "Uranium"
-    document.getElementById("prix").innerText = "6000,00€"
-    document.getElementById("description").innerText = "kaka kaka kaka"
-    ouvrirShopInfo()
-}
+    fetch('https://ffw95cfxfg.execute-api.eu-north-1.amazonaws.com/clients', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(nouveauClient)
+    })
+        
+    .catch(error => {
+        document.getElementById("ErrorMessage").innerText = "Erreur";
+    })
+        
+    .then(data => {
+        basculerMode();
+    })
 
-function Random(){
-    document.getElementById("productName").innerText = "Truc tres tres précis"
-    document.getElementById("prix").innerText = "10,00€"
-    document.getElementById("description").innerText = "kaka kaka kaka"
-    ouvrirShopInfo()
-}
-
-function Formation1(){
-    document.getElementById("productName").innerText = "Formation Tiralark"
-    document.getElementById("prix").innerText = "2500,00€"
-    document.getElementById("description").innerText = "kaka kaka kaka"
-    ouvrirShopInfo()
-}
-
-function Formation2(){
-    document.getElementById("productName").innerText = "Formation QI++"
-    document.getElementById("prix").innerText = "950,00€"
-    document.getElementById("description").innerText = "kaka kaka kaka"
-    ouvrirShopInfo()
-}
-
-function Formation3(){
-    document.getElementById("productName").innerText = "Formation Tiralark Pro Max"
-    document.getElementById("prix").innerText = "9999,99€"
-    document.getElementById("description").innerText = "kaka kaka kaka"
-    ouvrirShopInfo()
-}
-
-function Eau(){
-    document.getElementById("productName").innerText = "Eau Iyophilisé"
-    document.getElementById("prix").innerText = "25,00€"
-    document.getElementById("description").innerText = "kaka kaka kaka"
-    ouvrirShopInfo()
-}
-
-function Carquoi(){
-    document.getElementById("productName").innerText = "Car Quoi ?"
-    document.getElementById("prix").innerText = "44,00€"
-    document.getElementById("description").innerText = "kaka kaka kaka"
-    ouvrirShopInfo()
-}
-
-function DixPlus(){
-    document.getElementById("productName").innerText = "10+"
-    document.getElementById("prix").innerText = "10,00€"
-    document.getElementById("description").innerText = "kaka kaka kaka"
-    ouvrirShopInfo()
-}
-
-function Pailluze(){
-    document.getElementById("productName").innerText = "Pailluzé"
-    document.getElementById("prix").innerText = "20,00€"
-    document.getElementById("description").innerText = "kaka kaka kaka"
-    ouvrirShopInfo()
-}
-
-function PayantEmploi(){
-    document.getElementById("productName").innerText = "Payant d'emploi"
-    document.getElementById("prix").innerText = "950,00€"
-    document.getElementById("description").innerText = "kaka kaka kaka"
-    document.getElementById("Img").src = "images/produit1grand.png"
-    ouvrirShopInfo()
-}
-
-function Kanard(){
-    document.getElementById("productName").innerText = "Kanard"
-    document.getElementById("prix").innerText = "999,99€"
-    document.getElementById("description").innerText = "coin coin"
-    document.getElementById("Img").src = "images/kanard.png"
-    ouvrirShopInfo()
 }

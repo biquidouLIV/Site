@@ -7,141 +7,78 @@
     <link rel="icon" type="image/png" href="images/Icon.png">
 </head>
 
-<body>
-<header>
-    <a href="index.html"><img src="images/IconBlanc.png"></a>
-    <p>Le Tiralark</p>
-</header>
+<body onload="chargerProduits()">
 
-<main>
-    <h1>Tu vouloir acheter Tiralark ?</h1>
+    <header>
+        <a href="index.html"><img src="images/IconBlanc.png"></a>
+        <p>Le Tiralark</p>
+        <a onclick="ouvrirPopupConnexion()"><img src="images/IconBlanc.png"></a>
+    </header>
+
+    <main>
+        <h1>Tu vouloir acheter Tiralark ?</h1>
+        
+        <div class="shop" id="liste-produits"></div>
+
+        <div id="ShopInfo" class="shop-info">
+            <div class="shop-info-PopUp" id="shopPopUp">
+                
+                <h2 id="productName"></h2>
+                
+                <div class="info-produit">  
+                    
+                    <img src="images/produit1grand.png" id="Img" style="max-height: 500px;max-width: 500px; width: 100%;background-color: blue; margin-left: 50px">
+                    
+                    <div class="desciption">
+                        <p class="prix" id="prix"></p>
+                        <p id="description"></p>
+                    </div>
+                </div>    
+                
+                <div class="shop-info-button">
+                    <button onclick="fermerShopInfo()">Parti</button>
+                    <button onclick="fermerShopInfo()">Acheter</button>
+                </div>
     
-    <div class="shop">
-        <div class="shop-item">
-            <img src="images/produit1.png" class="shop-image"></img>
-            <p>Tiralark en pot</p>
-            <button onclick="TiralarkEnPot()">Acheter</button>
+                    
+                </div>
+            </div>
         </div>
-        <div class="shop-item">
-            <img src="images/produit1.png" class="shop-image"></img>
-            <p>Lot de Tiralark en Pot</p>
-            <button onclick="LotDeTiralarkEnPot()">Acheter</button>
-        </div>
-        <div class="shop-item">
-            <img src="images/produit1.png" class="shop-image"></img>
-            <p>Tiralark En Tube</p>
-            <button onclick="TiralarkEnTube()">Acheter</button>
-        </div>
-        <div class="shop-item">
-            <img src="images/produit1.png" class="shop-image"></img>
-            <p>Zarkuzés</p>
-            <button onclick="Zarkuzes()">Acheter</button>
-        </div>
-    </div>
 
-    
-    <div class="shop">
-        <div class="shop-item">
-            <img src="images/produit1.png" class="shop-image"></img>
-            <p>Blazonhuzé</p>
-            <button onclick="Blazonhuzé()">Acheter</button>
-        </div>
-        <div class="shop-item">
-            <img src="images/produit1.png" class="shop-image"></img>
-            <p>Barre d'Uranium 235</p>
-            <button onclick="Uranium()">Acheter</button>
-        </div>
-        <div class="shop-item">
-            <img src="images/produit1.png" class="shop-image"></img>
-            <p>truc random tres tres précis</p>
-            <button onclick="Random()">Acheter</button>
-        </div>
-        <div class="shop-item">
-            <img src="images/produit1.png" class="shop-image"></img>
-            <p>Formation Tiralark</p>
-            <button onclick="Formation1()">Acheter</button>
-        </div>
-    </div>
+        
+        
+        <div id="PopupConnexion" class="overlay">
+            <div class="popup" style="width: 400px;"> 
+                <h2 id="titreConnexion">Connexion</h2>
+                
+                <p id="ErrorMessage" style="color: red; font-weight: bold; font-size: 16px; min-height: 20px; margin: 5px 0;"></p>
+                
+                
+                <div id="champsInscription" style="display:none;">
+                    <input type="text" id="nomClient" class="input-popup" placeholder="Ton Nom">
+                    <input type="text" id="prenomClient" class="input-popup" placeholder="Ton Prénom">
+                    <input type="text" id="adresseClient" class="input-popup" placeholder="Ton Adresse">
+                    <input type="text" id="telClient" class="input-popup" placeholder="Ton num">
+                </div>
 
-    <div class="shop">
-        <div class="shop-item">
-            <img src="images/produit1.png" class="shop-image"></img>
-            <p>Formation QI++</p>
-            <button onclick="Formation2()">Acheter</button>
-        </div>
-        <div class="shop-item">
-            <img src="images/produit1.png" class="shop-image"></img>
-            <p>Formation Tiralark Pro Max</p>
-            <button onclick="Formation3()">Acheter</button>
-        </div>
-        <div class="shop-item">
-            <img src="images/produit1.png" class="shop-image"></img>
-            <p>Eau Iyophilisé pour Tiralarkeur</p>
-            <button onclick="Eau()">Acheter</button>
-        </div>
-        <div class="shop-item">
-            <img src="images/produit1.png" class="shop-image"></img>
-            <p>Car Quoi ?</p>
-            <button onclick="Carquoi()">Acheter</button>
-        </div>
-    </div>
+                <input type="email" id="emailClient" class="input-popup" placeholder="Email">
+                <input type="password" id="mdpClient" class="input-popup" placeholder="Mot de passe">
 
-    <div class="shop">
-        <div class="shop-item">
-            <img src="images/produit1.png" class="shop-image"></img>
-            <p>10+</p>
-            <button onclick="DixPlus()">Acheter</button>
-        </div>
-        <div class="shop-item">
-            <img src="images/produit1.png" class="shop-image"></img>
-            <p>pailluzé</p>
-            <button onclick="Pailluze()">Acheter</button>
-        </div>
-        <div class="shop-item">
-            <img src="images/produit1.png" class="shop-image"></img>
-            <p>Payant d'emploi</p>
-            <button onclick="PayantEmploi()">Acheter</button>
-        </div>
-        <div class="shop-item">
-            <img src="images/kanard.png" class="shop-image"></img>
-            <p>Kanard</p>
-            <button onclick="Kanard()">Acheter</button>
+                <button onclick="actionConnexion()" id="btnAction">Se connecter</button>
+
+                <p onclick="basculerMode()" id="lienMode" style="cursor:pointer; text-decoration:underline; font-size: 15px; margin-top:10px;">
+                    Toi pas compte ? Toi faire compte
+                </p>
+
+                <button onclick="fermerPopupConnexion()" style="background-color: white; color: black; border: 2px solid black; padding: 5px; margin-top: 10px;">Fermer</button>
+            </div>
         </div>
         
+    </main>
 
-    </div>
-    
-    <div id="ShopInfo" class="shop-info">
-        <div class="shop-info-PopUp" id="shopPopUp">
-            
-            <h2 id="productName"></h2>
-            
-            <div class="info-produit">  
-                
-                <img src="images/produit1grand.png" id="Img" style="max-height: 500px;max-width: 500px; width: 100%;background-color: blue; margin-left: 50px">
-                
-                <div class="desciption">
-                    <p class="prix" id="prix"></p>
-                    <p id="description"></p>
-                </div>
-                
-            </div>    
-            
-            <div class="shop-info-button">
-                <button onclick="fermerShopInfo()">Parti</button>
-                <button onclick="fermerShopInfo()">Acheter</button>
-            </div>
-
-                
-            </div>
-        </div>
-    </div>
-    
-</main>
-
-<footer>
-    <p>Le Tiralark Enkor</p>
-</footer>
+    <footer>
+        <p>Le Tiralark Enkor</p>
+    </footer>
 </body>
 <script src="kaka.js"></script>
 </html>
