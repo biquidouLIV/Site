@@ -145,11 +145,18 @@ function CreerProduit(produit, container){
 
 function AfficherDetailsProduit(produit) {
     document.getElementById("productName").innerText = produit.nom;
-    document.getElementById("prix").innerText =produit.prix + " €";
+    document.getElementById("prix").innerText = produit.prix + " €";
     document.getElementById("description").innerText = produit.description;
-    document.getElementById("Img").src = produit.image
-    
-    
+    document.getElementById("Img").src = produit.image;
+
+    // On récupère le bouton "Acheter" de la popup produit
+    var btnAcheter = document.querySelectorAll(".shop-info-button button")[1];
+
+    // Quand on clique dessus -> Hop dans le panier
+    btnAcheter.onclick = function() {
+        ajouterAuPanier(produit);
+    };
+
     ouvrirShopInfo();
 }
 
@@ -253,4 +260,118 @@ function Inscription() {
         basculerMode();
     })
 
+}
+
+// --- GESTION DU PANIER ---
+
+var panier = []; // Notre liste d'achats
+
+// 1. Ajouter un produit (appelé quand on clique "Acheter" sur un produit)
+function ajouterAuPanier(produit) {
+    panier.push(produit);
+    alert("C'est ajouté !"); // Petit message de confirmation
+    fermerShopInfo();        // On ferme la fiche produit
+}
+
+// 2. Ouvrir la popup et afficher la liste (C'est là que ça se dessine)
+function ouvrirPanier() {
+    var zoneListe = document.getElementById("listeArticles");
+    var zoneTotal = document.getElementById("prixTotal");
+
+    // Si vide
+    if (panier.length === 0) {
+        zoneListe.innerHTML = "<p style='text-align:center'>Ton panier est vide...</p>";
+        zoneTotal.innerText = "0";
+    } else {
+        // Sinon, on construit la liste
+        var html = "";
+        var total = 0;
+
+        // On boucle sur chaque article pour l'afficher
+        panier.forEach((prod, index) => {
+            html += `<div style="display:flex; justify-content:space-between; border-bottom:1px solid #ccc; padding:5px;">
+                        <span>${prod.nom}</span>
+                        <span>${prod.prix} €</span>
+                        <button onclick="retirerArticle(${index})" style="background:red; color:white; padding:2px 8px; margin:0; font-size:12px;">X</button>
+                     </div>`;
+
+            // On ajoute au total (on s'assure que c'est bien un nombre)
+            total += parseFloat(prod.prix);
+        });
+
+        zoneListe.innerHTML = html;
+        zoneTotal.innerText = total; // On arrondit si besoin
+    }
+
+    document.getElementById("PopupPanier").style.display = "flex";
+}
+
+// 3. Fermer la popup
+function fermerPanier() {
+    document.getElementById("PopupPanier").style.display = "none";
+}
+
+// 4. Retirer un article précis
+function retirerArticle(index) {
+    panier.splice(index, 1); // Enlève 1 élément à la position 'index'
+    ouvrirPanier();          // On rafraîchit l'affichage tout de suite
+}
+
+// 5. Envoyer la commande (Le grand final)
+
+
+function validerCommande() {
+    // 1. Récupération Client
+    var clientJson = localStorage.getItem("clientConnecte");
+    if (!clientJson) {
+        fermerPanier();
+        return ouvrirPopupConnexion();
+    }
+    var client = JSON.parse(clientJson);
+
+    // 2. ID Client
+    var idClient = client.id || client.idClient || client._id;
+    if (!idClient) return alert("Erreur CRITIQUE : Pas d'ID client trouvé. Déconnecte-toi et recrée un compte.");
+
+    // 3. Corps du message (EXACTEMENT comme Postman)
+    // On force des valeurs simples pour débloquer la situation
+    var payload = {
+        "produits": [],         // Tableau vide obligatoire pour la création
+        "prixTotal": 0,         // Entier (pas de string, pas de virgule)
+        "dateLivraison": "2024-01-01", // Une date simple
+        "gp1": "Liam"           // Le groupe est ICI, pas dans l'URL
+    };
+
+    // 4. L'URL (On enlève le ?gp1=Liam à la fin !)
+    var url = 'https://ffw95cfxfg.execute-api.eu-north-1.amazonaws.com/clients/' + idClient + '/commandes';
+
+    console.log("---------------- VERIFICATION ----------------");
+    console.log("URL visée :", url);
+    console.log("Données envoyées :", JSON.stringify(payload));
+    console.log("----------------------------------------------");
+
+    fetch(url, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+            // Pas d'autres headers bizarres
+        },
+        body: JSON.stringify(payload)
+    })
+        .then(response => {
+            if (response.ok) {
+                alert("✅ VICTOIRE ! Commande créée.");
+                panier = [];
+                fermerPanier();
+            } else {
+                // Si ça rate, on affiche le message technique du serveur
+                return response.text().then(text => {
+                    alert("❌ Erreur " + response.status + " : " + text);
+                    console.log("Réponse serveur :", text);
+                });
+            }
+        })
+        .catch(error => {
+            alert("⚠️ Erreur Réseau : " + error.message);
+        });
 }

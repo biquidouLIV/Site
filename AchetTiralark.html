@@ -12,6 +12,9 @@
     <header>
         <a href="index.html"><img src="images/IconBlanc.png"></a>
         <p>Le Tiralark</p>
+        <button onclick="ouvrirPanier()" style="background:white; border:none; padding:10px; border-radius:10px; font-family:Lexend; cursor:pointer; margin-right:20px;">
+            Panier
+        </button>
         <a onclick="ouvrirPopupConnexion()"><img src="images/IconBlanc.png"></a>
     </header>
 
@@ -73,7 +76,21 @@
                 <button onclick="fermerPopupConnexion()" style="background-color: white; color: black; border: 2px solid black; padding: 5px; margin-top: 10px;">Fermer</button>
             </div>
         </div>
-        
+
+        <div id="PopupPanier" class="overlay">
+            <div class="popup" style="width: 500px;">
+                <h2>Ton Panier</h2>
+
+                <div id="listeArticles" style="text-align: left; max-height: 300px; overflow-y: auto; margin: 10px 0; border: 2px solid black; padding: 10px;">
+                    <p>Rien pour l'instant...</p>
+                </div>
+
+                <h3>Total : <span id="prixTotal">0</span> €</h3>
+
+                <button onclick="validerCommande()">Commander</button>
+                <button onclick="fermerPanier()" style="background-color: white; color: black; border: 2px solid black;">Fermer</button>
+            </div>
+        </div>
     </main>
 
     <footer>
