@@ -95,51 +95,30 @@ function chargerProduits() {
         })
 }
 
+
+//boutique
 function CreerProduit(produit, container){
-    // 1. Création de la div .shop-item
     var divItem = document.createElement("div");
     divItem.className = "shop-item";
-
-    // 2. Création de l'image
+    
     var img = document.createElement("img");
     img.className = "shop-image";
-
-    // --- C'EST ICI QUE CA SE JOUE ---
-
-    // Pour t'aider : regarde dans la Console (F12) de ton navigateur.
-    // Ça va t'afficher les infos du produit. Cherche s'il y a "image", "url", "src" ou "photo".
-    console.log("Infos du produit :", produit);
-
-    // Si dans ta base de données, la colonne s'appelle "image", laisse ça :
-    if (produit.image) {
-        img.src = produit.image;
-    }
-        // Si elle s'appelle "url", remplace par : img.src = produit.url;
-    // Si elle s'appelle "photo", remplace par : img.src = produit.photo;
-    else {
-        // Image de secours si aucune image n'est trouvée
-        img.src = "images/produit1.png";
-    }
-
-    // 3. Création du nom
+    img.src = produit.image;
+    
     var pName = document.createElement("p");
     pName.innerText = produit.nom || "Produit sans nom";
-
-    // 4. Création du bouton
+    
     var btn = document.createElement("button");
     btn.innerText = "Acheter";
 
-    // On garde en mémoire les infos de CE produit pour la popup
+    
     btn.onclick = function() {
         AfficherDetailsProduit(produit);
     };
-
-    // 5. Assemblage
+    
     divItem.appendChild(img);
     divItem.appendChild(pName);
     divItem.appendChild(btn);
-
-    // 6. Ajout à la page
     container.appendChild(divItem);
 }
 
@@ -148,11 +127,9 @@ function AfficherDetailsProduit(produit) {
     document.getElementById("prix").innerText = produit.prix + " €";
     document.getElementById("description").innerText = produit.description;
     document.getElementById("Img").src = produit.image;
-
-    // On récupère le bouton "Acheter" de la popup produit
+    
     var btnAcheter = document.querySelectorAll(".shop-info-button button")[1];
-
-    // Quand on clique dessus -> Hop dans le panier
+    
     btnAcheter.onclick = function() {
         ajouterAuPanier(produit);
     };
@@ -164,11 +141,11 @@ function AfficherDetailsProduit(produit) {
 
 
 
-
-var modeInscription = false; // Par défaut, on est en mode "Connexion"
+//client
+var modeInscription = false;
 
 function basculerMode() {
-    modeInscription = !modeInscription; // On inverse le mode
+    modeInscription = !modeInscription;
 
     document.getElementById("ErrorMessage").innerText = "";
 
@@ -178,13 +155,12 @@ function basculerMode() {
     var lien = document.getElementById("lienMode");
 
     if (modeInscription) {
-        // On affiche le mode Inscription
         divInscrip.style.display = "block";
         titre.innerText = "Créer un compte";
         btn.innerText = "S'inscrire";
         lien.innerText = "Toi déjà compte";
-    } else {
-        // On revient au mode Connexion
+    } 
+    else {
         divInscrip.style.display = "none";
         titre.innerText = "Connexion";
         btn.innerText = "Se connecter";
@@ -210,7 +186,6 @@ function Connexion() {
         .then(response => response.json())
         
         .then(clients => {
-            // 2. On cherche si un client a ce mail et ce mot de passe
             var clientTrouve = clients.find(c => c.mail === mail && c.mdp === mdp);
 
             if (clientTrouve) {
@@ -262,116 +237,119 @@ function Inscription() {
 
 }
 
-// --- GESTION DU PANIER ---
 
-var panier = []; // Notre liste d'achats
+//panier
+var panier = [];
 
-// 1. Ajouter un produit (appelé quand on clique "Acheter" sur un produit)
+
 function ajouterAuPanier(produit) {
     panier.push(produit);
-    alert("C'est ajouté !"); // Petit message de confirmation
-    fermerShopInfo();        // On ferme la fiche produit
+    alert("être ajouter dans panier");
 }
 
-// 2. Ouvrir la popup et afficher la liste (C'est là que ça se dessine)
 function ouvrirPanier() {
     var zoneListe = document.getElementById("listeArticles");
     var zoneTotal = document.getElementById("prixTotal");
 
-    // Si vide
+
     if (panier.length === 0) {
-        zoneListe.innerHTML = "<p style='text-align:center'>Ton panier est vide...</p>";
+        zoneListe.innerHTML = "<p style='text-align:center'>t'achètes rien... :(</p>";
         zoneTotal.innerText = "0";
     } else {
-        // Sinon, on construit la liste
+        //
         var html = "";
         var total = 0;
-
-        // On boucle sur chaque article pour l'afficher
+     
         panier.forEach((prod, index) => {
             html += `<div style="display:flex; justify-content:space-between; border-bottom:1px solid #ccc; padding:5px;">
                         <span>${prod.nom}</span>
                         <span>${prod.prix} €</span>
                         <button onclick="retirerArticle(${index})" style="background:red; color:white; padding:2px 8px; margin:0; font-size:12px;">X</button>
                      </div>`;
-
-            // On ajoute au total (on s'assure que c'est bien un nombre)
             total += parseFloat(prod.prix);
         });
-
         zoneListe.innerHTML = html;
-        zoneTotal.innerText = total; // On arrondit si besoin
+        zoneTotal.innerText = total;
+        //
     }
 
     document.getElementById("PopupPanier").style.display = "flex";
 }
 
-// 3. Fermer la popup
+
 function fermerPanier() {
     document.getElementById("PopupPanier").style.display = "none";
 }
 
-// 4. Retirer un article précis
-function retirerArticle(index) {
-    panier.splice(index, 1); // Enlève 1 élément à la position 'index'
-    ouvrirPanier();          // On rafraîchit l'affichage tout de suite
-}
 
-// 5. Envoyer la commande (Le grand final)
+function retirerArticle(index) {
+    panier.splice(index, 1);
+    ouvrirPanier();
+}
 
 
 function validerCommande() {
-    // 1. Récupération Client
+    if (!panier || panier.length === 0) return alert("y a rien...");
+
     var clientJson = localStorage.getItem("clientConnecte");
     if (!clientJson) {
         fermerPanier();
         return ouvrirPopupConnexion();
     }
+
     var client = JSON.parse(clientJson);
-
-    // 2. ID Client
     var idClient = client.id || client.idClient || client._id;
-    if (!idClient) return alert("Erreur CRITIQUE : Pas d'ID client trouvé. Déconnecte-toi et recrée un compte.");
 
-    // 3. Corps du message (EXACTEMENT comme Postman)
-    // On force des valeurs simples pour débloquer la situation
-    var payload = {
-        "produits": [],         // Tableau vide obligatoire pour la création
-        "prixTotal": 0,         // Entier (pas de string, pas de virgule)
-        "dateLivraison": "2024-01-01", // Une date simple
-        "gp1": "Liam"           // Le groupe est ICI, pas dans l'URL
+    if (!idClient) return;
+    
+    var payloadCreation = {
+        "produits": [],
+        "prixTotal": 0,
+        "dateLivraison": "2024-01-01",
+        "gp1": "Liam"
     };
 
-    // 4. L'URL (On enlève le ?gp1=Liam à la fin !)
-    var url = 'https://ffw95cfxfg.execute-api.eu-north-1.amazonaws.com/clients/' + idClient + '/commandes';
-
-    console.log("---------------- VERIFICATION ----------------");
-    console.log("URL visée :", url);
-    console.log("Données envoyées :", JSON.stringify(payload));
-    console.log("----------------------------------------------");
-
-    fetch(url, {
+    var urlCreation = 'https://ffw95cfxfg.execute-api.eu-north-1.amazonaws.com/clients/' + idClient + '/commandes';
+    
+    fetch(urlCreation, {
         method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-            // Pas d'autres headers bizarres
-        },
-        body: JSON.stringify(payload)
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payloadCreation)
     })
         .then(response => {
-            if (response.ok) {
-                alert("✅ VICTOIRE ! Commande créée.");
-                panier = [];
-                fermerPanier();
-            } else {
-                // Si ça rate, on affiche le message technique du serveur
-                return response.text().then(text => {
-                    alert("❌ Erreur " + response.status + " : " + text);
-                    console.log("Réponse serveur :", text);
-                });
-            }
+            if (response.ok) return response.json();
+            throw new Error("Erreur " + response.status );
+        })
+        .then(data => {
+            var idCommande = data.idCommande || data.id || data._id;
+
+            console.log("Commande créée ! ID : " + idCommande);
+            remplirLaCommande(idClient, idCommande);
         })
         .catch(error => {
-            alert("⚠️ Erreur Réseau : " + error.message);
+            alert("Oups : " + error.message);
         });
+    alert("c'est bon")
+}
+
+
+function remplirLaCommande(idClient, idCommande) {
+    var bouton = document.querySelector("#PopupPanier button");
+    var produitsAjoutes = 0;
+
+    panier.forEach(produit => {
+        var urlAjout = 'https://ffw95cfxfg.execute-api.eu-north-1.amazonaws.com/clients/' + idClient + '/commandes/' + idCommande + '/produits';
+        var idProd = produit.id || produit.idProduit || produit._id;
+
+        fetch(urlAjout, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                "gp1": "Liam",
+                "idProduit": idProd
+            })
+        }).then(() => {
+            produitsAjoutes++;
+        });
+    });
 }
