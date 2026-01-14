@@ -122,6 +122,8 @@ function CreerProduit(produit, container){
     container.appendChild(divItem);
 }
 
+
+
 function AfficherDetailsProduit(produit) {
     document.getElementById("productName").innerText = produit.nom;
     document.getElementById("prix").innerText = produit.prix + " €";
@@ -192,7 +194,7 @@ function Connexion() {
                 document.getElementById("ErrorMessage").innerText = "C'est bon t'es co "+clientTrouve.prenom + " "+clientTrouve.nom;
                 localStorage.setItem("clientConnecte", JSON.stringify(clientTrouve));
             } else {
-                document.getElementById("ErrorMessage").innerText = "Email ou mot de passe incorrect";
+                document.getElementById("ErrorMessage").innerText = "Email ou mot de passe pas bien";
             }
         })
         .catch(error => console.error("Erreur:", error));
@@ -234,17 +236,15 @@ function Inscription() {
     .then(data => {
         basculerMode();
     })
-
 }
 
 
-//panier
+//commande
 var panier = [];
 
 
 function ajouterAuPanier(produit) {
     panier.push(produit);
-    alert("être ajouter dans panier");
 }
 
 function ouvrirPanier() {
@@ -289,7 +289,7 @@ function retirerArticle(index) {
 
 
 function validerCommande() {
-    if (!panier || panier.length === 0) return alert("y a rien...");
+    if (panier.length === 0) return alert("y a rien...");
 
     var clientJson = localStorage.getItem("clientConnecte");
     if (!clientJson) {
@@ -298,14 +298,14 @@ function validerCommande() {
     }
 
     var client = JSON.parse(clientJson);
-    var idClient = client.id || client.idClient || client._id;
+    var idClient = client.idClient;
 
     if (!idClient) return;
     
     var payloadCreation = {
-        "produits": [],
-        "prixTotal": 0,
-        "dateLivraison": "2024-01-01",
+        "produits":panier,
+        "prixTotal":document.getElementById("prixTotal").innerText,
+        "dateLivraison": "très très bientôt",
         "gp1": "Liam"
     };
 
@@ -318,18 +318,25 @@ function validerCommande() {
     })
         .then(response => {
             if (response.ok) return response.json();
-            throw new Error("Erreur " + response.status );
+            throw new Error(response.status );
         })
         .then(data => {
-            var idCommande = data.idCommande || data.id || data._id;
+            var idCommande
+            fetch('https://ffw95cfxfg.execute-api.eu-north-1.amazonaws.com/clients/' + idClient + '?gp1=Liam',{            })
+                .then(response => response.json())
+                .then(data => {
+                    
+                    idCommande = data.commandes.en_cours.idCommande;
+                    console.log("Commande créée ! ID : " + idCommande);
+                    remplirLaCommande(idClient, idCommande);
+                    ValiderCommande(idClient,idCommande)
+                })
 
-            console.log("Commande créée ! ID : " + idCommande);
-            remplirLaCommande(idClient, idCommande);
+          
         })
         .catch(error => {
-            alert("Oups : " + error.message);
+            alert(error.message);
         });
-    alert("c'est bon")
 }
 
 
@@ -339,17 +346,36 @@ function remplirLaCommande(idClient, idCommande) {
 
     panier.forEach(produit => {
         var urlAjout = 'https://ffw95cfxfg.execute-api.eu-north-1.amazonaws.com/clients/' + idClient + '/commandes/' + idCommande + '/produits';
-        var idProd = produit.id || produit.idProduit || produit._id;
 
         fetch(urlAjout, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
                 "gp1": "Liam",
-                "idProduit": idProd
+                "idProduit": produit.idProduit,
             })
         }).then(() => {
             produitsAjoutes++;
+            console.log(produitsAjoutes)
         });
     });
+}
+
+function ValiderCommande(idClient, idCommande) {
+
+    var Patch = {
+        "statut": "valide",
+        "gp1": "Liam"
+    }
+
+    fetch('https://ffw95cfxfg.execute-api.eu-north-1.amazonaws.com/clients/' + idClient + '/commandes/' + idCommande, {
+        method: 'PATCH',
+        headears: {'Content-Type': 'application/json'},
+        body: JSON.stringify(Patch)
+    })
+        .then(response => {
+            if(response.ok) {
+                alert("Commande Validée")
+            }
+        })
 }
